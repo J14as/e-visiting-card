@@ -1,0 +1,42 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+/config/credentials/*.key
+
+# Ignore development databases.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/*.sqlite3-shm
+/db/*.sqlite3-wal
+
+# Ignore .env files
+.env
+.env.*
+!.env.example
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Ignore test outputs
+/test/rendered_page_*.png
+/test/output_test.pdf

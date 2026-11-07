@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+  <head>
+    <title><%= content_for(:title) || "CardForge | SaaS Digital Visiting Card & Smart QR Generator" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="CardForge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      /* Theme styles for builder live preview */
+      [data-theme-style="modern_dark"] .card-theme-bg {
+        background: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+        color: #f8fafc;
+        border-color: #334155;
+      }
+      [data-theme-style="clean_light"] .card-theme-bg {
+        background: #ffffff;
+        color: #0f172a;
+        border-color: #e2e8f0;
+      }
+      [data-theme-style="minimalist"] .card-theme-bg {
+        background: #000000;
+        color: #f5f5f5;
+        border-color: #262626;
+      }
+      [data-theme-style="gradient_aurora"] .card-theme-bg {
+        background: linear-gradient(135deg, rgba(30, 27, 75, 0.9) 0%, rgba(88, 28, 135, 0.85) 50%, rgba(15, 23, 42, 0.95) 100%);
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      [data-theme-style="cyber_glass"] .card-theme-bg {
+        background: linear-gradient(180deg, rgba(24, 24, 27, 0.95) 0%, rgba(9, 9, 11, 0.98) 100%);
+        color: #f4f4f5;
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      /* Color accents */
+      [data-theme-color="indigo"] .accent-color { color: #818cf8; }
+      [data-theme-color="indigo"] .accent-bg { background-color: #6366f1; }
+      [data-theme-color="indigo"] .accent-border { border-color: #6366f1; }
+
+      [data-theme-color="emerald"] .accent-color { color: #34d399; }
+      [data-theme-color="emerald"] .accent-bg { background-color: #10b981; }
+      [data-theme-color="emerald"] .accent-border { border-color: #10b981; }
+
+      [data-theme-color="violet"] .accent-color { color: #a78bfa; }
+      [data-theme-color="violet"] .accent-bg { background-color: #8b5cf6; }
+      [data-theme-color="violet"] .accent-border { border-color: #8b5cf6; }
+
+      [data-theme-color="sky"] .accent-color { color: #38bdf8; }
+      [data-theme-color="sky"] .accent-bg { background-color: #0ea5e9; }
+      [data-theme-color="sky"] .accent-border { border-color: #0ea5e9; }
+
+      [data-theme-color="rose"] .accent-color { color: #fb7185; }
+      [data-theme-color="rose"] .accent-bg { background-color: #f43f5e; }
+      [data-theme-color="rose"] .accent-border { border-color: #f43f5e; }
+
+      [data-theme-color="amber"] .accent-color { color: #fbbf24; }
+      [data-theme-color="amber"] .accent-bg { background-color: #f59e0b; }
+      [data-theme-color="amber"] .accent-border { border-color: #f59e0b; }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white">
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <%= link_to root_path, class: "flex items-center gap-2.5 group" do %>
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-200">
+                <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-extrabold text-lg text-white tracking-tight flex items-center gap-1.5">
+                  CardForge
+                  <span class="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">SaaS</span>
+                </span>
+                <span class="text-xs text-slate-400 hidden sm:inline">Smart Digital Cards & QR</span>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Navigation Links & User Menu -->
+          <nav class="flex items-center gap-3">
+            <% if user_signed_in? %>
+              <%= link_to dashboard_path, class: "px-3.5 py-2 text-sm font-medium rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition flex items-center gap-2" do %>
+                <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                <span>Dashboard</span>
+              <% end %>
+
+              <%= link_to new_card_path, class: "inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/25 transition active:scale-95" do %>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>New Card</span>
+              <% end %>
+
+              <!-- User Profile Dropdown Pill -->
+              <div class="h-6 w-px bg-slate-800 mx-1 hidden sm:block"></div>
+
+              <div class="flex items-center gap-2 text-sm pl-1">
+                <span class="text-xs text-slate-400 hidden md:inline truncate max-w-[140px]" title="<%= current_user.email %>">
+                  <%= current_user.display_name %>
+                </span>
+                <%= button_to destroy_user_session_path, method: :delete, class: "p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition", title: "Sign out" do %>
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                <% end %>
+              </div>
+            <% else %>
+              <%= link_to new_user_session_path, class: "px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white transition" do %>
+                Sign in
+              <% end %>
+              <%= link_to new_user_registration_path, class: "inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/25 transition" do %>
+                Get Started Free
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              <% end %>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Flash Messages -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-4">
+      <% if notice.present? %>
+        <div class="flex items-center justify-between p-4 mb-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm shadow-lg shadow-emerald-500/5 animate-fade-in" role="alert">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p><%= notice %></p>
+          </div>
+          <button type="button" onclick="this.parentElement.remove()" class="text-emerald-400 hover:text-emerald-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      <% end %>
+
+      <% if alert.present? %>
+        <div class="flex items-center justify-between p-4 mb-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm shadow-lg shadow-rose-500/5 animate-fade-in" role="alert">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-rose-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <p><%= alert %></p>
+          </div>
+          <button type="button" onclick="this.parentElement.remove()" class="text-rose-400 hover:text-rose-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950/60 py-8 mt-16 text-center text-xs text-slate-500">
+      <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>&copy; <%= Time.current.year %> CardForge Platform. Instant digital business cards & dynamic QR technology.</p>
+        <div class="flex items-center gap-6 text-slate-400">
+          <%= link_to "Home", root_path, class: "hover:text-white transition" %>
+          <% if user_signed_in? %>
+            <%= link_to "Dashboard", dashboard_path, class: "hover:text-white transition" %>
+            <%= link_to "New Card", new_card_path, class: "hover:text-white transition" %>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: "hover:text-white transition" %>
+            <%= link_to "Create Account", new_user_registration_path, class: "hover:text-white transition" %>
+          <% end %>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

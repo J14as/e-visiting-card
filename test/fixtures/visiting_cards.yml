@@ -1,0 +1,27 @@
+one:
+  user: one
+  card_title: "Corporate Card"
+  full_name: "Alex Sterling"
+  designation: "Cloud Architect"
+  company_or_tagline: "Nexus Systems"
+  bio: "Cloud infrastructure architect"
+  phone: "+15551234567"
+  email: "alex@example.com"
+  template_style: "modern_dark"
+  color_theme: "indigo"
+  slug: "alex-sterling"
+  views_count: 10
+
+two:
+  user: two
+  card_title: "Freelance Card"
+  full_name: "Bob Builder"
+  designation: "Consultant"
+  company_or_tagline: "Builder LLC"
+  bio: "Full stack engineering"
+  phone: "+15559876543"
+  email: "bob@example.com"
+  template_style: "clean_light"
+  color_theme: "sky"
+  slug: "bob-builder"
+  views_count: 5

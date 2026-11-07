@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full selection:bg-indigo-500 selection:text-white">
+  <head>
+    <title><%= content_for(:title) || "#{@card.full_name} | Digital Visiting Card" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#090d16">
+    
+    <!-- OpenGraph / Social Sharing tags -->
+    <meta property="og:title" content="<%= @card.full_name %> - <%= @card.designation.presence || 'Digital Visiting Card' %>">
+    <meta property="og:description" content="<%= @card.bio.presence || @card.company_or_tagline.presence || 'Connect instantly via digital business card' %>">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="<%= request.original_url %>">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col items-center justify-start <%= @card.template_config[:bg_class] %>">
+    <main class="w-full flex-grow flex flex-col items-center">
+      <%= yield %>
+    </main>
+
+    <footer class="w-full text-center py-6 text-xs opacity-60">
+      <div class="flex items-center justify-center gap-1.5">
+        <span>Powered by</span>
+        <%= link_to "CardForge", root_path, class: "font-semibold underline hover:opacity-100 transition" %>
+      </div>
+    </footer>
+  </body>
+</html>
+

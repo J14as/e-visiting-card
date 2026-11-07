@@ -1,0 +1,243 @@
+<% content_for :title, "CardForge | Professional Digital Visiting Cards & Dynamic QR Generator" %>
+
+<div class="relative overflow-hidden">
+  <!-- Ambient background glow elements -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[550px] overflow-hidden pointer-events-none -z-10">
+    <div class="absolute top-[-20%] left-[20%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[128px]"></div>
+    <div class="absolute top-[10%] right-[15%] w-[420px] h-[420px] bg-cyan-500/15 rounded-full blur-[128px]"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left Column: Copy & CTAs -->
+      <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wide">
+          <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+          Next-Gen Digital Networking Platform
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+          Modern Digital Visiting Cards with <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">Dynamic Smart QR</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+          Create, customize, and share ultra-fast digital business cards. Give prospective clients and connections a 1-tap contact save, mobile profile, and print-ready vector PDF layout.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <%= link_to new_user_registration_path, class: "w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/40 transition active:scale-95" do %>
+            <span>Create Your Card Free</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          <% end %>
+
+          <%= link_to new_user_session_path, class: "w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 transition" do %>
+            <span>Sign In to Dashboard</span>
+          <% end %>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-6 max-w-lg mx-auto lg:mx-0 text-left">
+          <div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-white">1 Tap</div>
+            <div class="text-xs text-slate-400 mt-0.5">Contact Save (.vcf)</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-white">5+</div>
+            <div class="text-xs text-slate-400 mt-0.5">Designer Themes</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-white">300 DPI</div>
+            <div class="text-xs text-slate-400 mt-0.5">Vector Print PDFs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Demo Card Mockup -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="w-full max-w-sm relative">
+          <!-- Glow behind card -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+
+          <div class="relative rounded-3xl bg-slate-900 border border-slate-700/80 p-6 shadow-2xl backdrop-blur-xl text-slate-100">
+            <!-- Card Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyan-400 flex items-center justify-center font-bold text-lg text-white shadow-md">
+                  AS
+                </div>
+                <div>
+                  <h3 class="font-bold text-base text-white">Alex Sterling</h3>
+                  <p class="text-xs text-indigo-400 font-medium">Principal Cloud Architect</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Active</span>
+            </div>
+
+            <!-- Card Body / Tagline -->
+            <div class="py-4 space-y-3">
+              <p class="text-xs text-slate-300 font-medium">
+                Nexus Systems & SaaS Labs
+              </p>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Building high-performance distributed systems, scalable web apps, and modern developer infrastructure.
+              </p>
+
+              <!-- Contact mini-pills -->
+              <div class="space-y-1.5 pt-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>+1 (555) 948-2910</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>alex@nexussystems.io</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Embedded QR preview block -->
+            <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-center justify-between gap-4 mt-2">
+              <div class="w-16 h-16 bg-white rounded-xl p-1 flex items-center justify-center shrink-0 shadow">
+                <!-- Sample vector QR icon -->
+                <svg class="w-14 h-14 text-slate-950" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 0h4v4h-4v-4zm-4-2h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 4h2v2h-2v-2zm-2 0h2v2h-2v-2zm-2-2h2v2h-2v-2zm4-4h2v2h-2v-2zm-4 0h2v2h-2v-2z"/>
+                </svg>
+              </div>
+              <div class="flex flex-col text-left">
+                <span class="text-xs font-bold text-white uppercase tracking-wider">Dynamic QR Code</span>
+                <span class="text-[11px] text-slate-400">Scan via phone camera for instant profile & vCard import</span>
+              </div>
+            </div>
+
+            <!-- Action buttons preview -->
+            <div class="grid grid-cols-2 gap-2 mt-4">
+              <div class="py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-semibold text-center shadow">
+                Save Contact
+              </div>
+              <div class="py-2.5 rounded-xl bg-slate-800 text-slate-200 text-xs font-semibold text-center border border-slate-700">
+                WhatsApp Chat
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-800/80">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2">Engineered For Modern Networking</h2>
+      <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Everything You Need In A Digital Visiting Card</p>
+      <p class="text-slate-400 text-sm mt-3">Say goodbye to outdated paper business cards that end up in the trash bin.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center border border-indigo-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white">Dynamic Smart QR Codes</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Dynamic SVG and PNG QR codes generated automatically via <code class="text-indigo-300">rqrcode</code>. Point any camera to open your mobile profile instantly.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white">1-Tap vCard Download</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Standard RFC-compliant <code class="text-emerald-300">.vcf</code> contact card export. Allows recipients to save your full contact details into Apple Contacts or Google Contacts with one tap.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white">High-Resolution PDF Cards</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Built-in Prawn engine renders print-ready, double-sided (3.5" x 2") visiting card PDFs with sharp typography and high-density vector QR codes.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white">Real-Time Split Builder</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Hotwire Stimulus-powered live preview updates characters and theme styling instantaneously as you type without waiting for page refreshes.
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center border border-rose-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white">Multi-Card Management</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Maintain different visiting cards for your day job, your freelance consulting practice, your portfolio, and your personal networking.
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-white">SEO & Friendly Slugs</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Personalized vanity URLs like <code class="text-amber-300">/c/your-name</code> powered by <code class="text-amber-300">friendly_id</code> with rich OpenGraph link preview cards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="relative rounded-3xl bg-gradient-to-r from-indigo-900/80 via-purple-900/60 to-slate-900 border border-indigo-500/30 p-8 sm:p-12 text-center overflow-hidden shadow-2xl">
+      <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Ready to upgrade your professional card?</h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Join professionals using CardForge to connect seamlessly. Create your card, download your QR code, and start networking smarter today.
+        </p>
+        <div class="pt-2">
+          <%= link_to new_user_registration_path, class: "inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold bg-white text-slate-950 hover:bg-slate-100 shadow-xl transition active:scale-95" do %>
+            <span>Get Started For Free</span>
+            <svg class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+

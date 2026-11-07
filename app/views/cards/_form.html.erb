@@ -1,0 +1,276 @@
+<%= form_with(model: card, url: card.persisted? ? card_path(card) : cards_path, class: "space-y-8") do |f| %>
+  <% if card.errors.any? %>
+    <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm space-y-2">
+      <div class="flex items-center gap-2 font-semibold">
+        <svg class="w-5 h-5 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span>Please correct the following errors:</span>
+      </div>
+      <ul class="list-disc list-inside text-xs space-y-1 text-rose-400">
+        <% card.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- SECTION 1: CARD IDENTITY & TITLE -->
+  <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+    <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+        Card Management Title
+      </h3>
+      <span class="text-xs text-slate-500">Private label for your dashboard</span>
+    </div>
+
+    <div>
+      <%= f.label :card_title, "Card Label / Purpose", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <%= f.text_field :card_title, placeholder: "e.g., Corporate Networking, Freelance Consultant, Side Hustle", class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+    </div>
+  </div>
+
+  <!-- SECTION 2: PERSONAL & PROFESSIONAL DETAILS -->
+  <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-5">
+    <div class="border-b border-slate-800 pb-3">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+        Professional Details
+      </h3>
+      <p class="text-xs text-slate-400 mt-0.5">These will appear on your card front and public QR profile.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <%= f.label :full_name, "Full Name *", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+        <%= f.text_field :full_name, 
+                         data: { card_preview_target: "fullNameInput", action: "input->card-preview#updateFullName" },
+                         placeholder: "e.g., Alex Sterling", 
+                         required: true,
+                         class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+
+      <div>
+        <%= f.label :designation, "Job Title / Role", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+        <%= f.text_field :designation, 
+                         data: { card_preview_target: "designationInput", action: "input->card-preview#updateDesignation" },
+                         placeholder: "e.g., Principal Cloud Architect", 
+                         class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :company_or_tagline, "Company Name or Professional Tagline", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <%= f.text_field :company_or_tagline, 
+                       data: { card_preview_target: "companyInput", action: "input->card-preview#updateCompany" },
+                       placeholder: "e.g., Nexus Systems & SaaS Labs", 
+                       class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+    </div>
+
+    <div>
+      <%= f.label :bio, "Brief Professional Bio / Summary", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <%= f.text_area :bio, 
+                      rows: 3,
+                      data: { card_preview_target: "bioInput", action: "input->card-preview#updateBio" },
+                      placeholder: "Briefly describe your expertise, background, or current focus...", 
+                      class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+    </div>
+  </div>
+
+  <!-- SECTION 3: DIRECT CONTACT INFO -->
+  <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+    <div class="border-b border-slate-800 pb-3">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        Direct Contact Channels
+      </h3>
+      <p class="text-xs text-slate-400 mt-0.5">Enables instant 1-tap dial, email, and WhatsApp direct messaging.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <%= f.label :phone, "Phone / WhatsApp Number", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+        <%= f.telephone_field :phone, 
+                              data: { card_preview_target: "phoneInput", action: "input->card-preview#updatePhone" },
+                              placeholder: "+1 (555) 019-2834", 
+                              class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+
+      <div>
+        <%= f.label :email, "Email Address", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+        <%= f.email_field :email, 
+                          data: { card_preview_target: "emailInput", action: "input->card-preview#updateEmail" },
+                          placeholder: "alex@example.com", 
+                          class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :portfolio_url, "Portfolio / Website URL", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <%= f.url_field :portfolio_url, 
+                      data: { card_preview_target: "websiteInput", action: "input->card-preview#updateWebsite" },
+                      placeholder: "https://yourportfolio.dev", 
+                      class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+    </div>
+  </div>
+
+  <!-- SECTION 4: SOCIAL LINKS -->
+  <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+    <div class="border-b border-slate-800 pb-3">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+        Professional Social Links
+      </h3>
+      <p class="text-xs text-slate-400 mt-0.5">Quick connection buttons on your public mobile page.</p>
+    </div>
+
+    <div class="space-y-3.5">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+          <svg class="w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </span>
+        <%= f.url_field :linkedin_url, 
+                        data: { card_preview_target: "linkedinInput", action: "input->card-preview#updateSocials" },
+                        placeholder: "https://linkedin.com/in/yourprofile", 
+                        class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+          <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </span>
+        <%= f.url_field :github_url, 
+                        data: { card_preview_target: "githubInput", action: "input->card-preview#updateSocials" },
+                        placeholder: "https://github.com/yourusername", 
+                        class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0">
+          <svg class="w-5 h-5 text-rose-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </span>
+        <%= f.url_field :instagram_url, 
+                        data: { card_preview_target: "instagramInput", action: "input->card-preview#updateSocials" },
+                        placeholder: "https://instagram.com/yourhandle", 
+                        class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: RESUME / CV ATTACHMENT -->
+  <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+    <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+      <div>
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+          Resume / Curriculum Vitae (CV)
+        </h3>
+        <p class="text-xs text-slate-400 mt-0.5">Allow recruiters & clients to download your complete Resume/CV directly from your digital card.</p>
+      </div>
+      <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20">Optional</span>
+    </div>
+
+    <!-- Direct File Upload -->
+    <div>
+      <%= f.label :resume, "Upload Resume File (PDF, DOCX, DOC)", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <%= f.file_field :resume, 
+                       accept: "application/pdf,.doc,.docx", 
+                       class: "block w-full text-xs text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-slate-200 hover:file:bg-slate-700 cursor-pointer bg-slate-950 p-2 rounded-xl border border-slate-800" %>
+      <p class="text-[11px] text-slate-500 mt-1">Recommended: PDF format (max 10MB). Overwrites previous file when chosen.</p>
+    </div>
+
+    <% if card.persisted? && card.resume.attached? %>
+      <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-emerald-500/30 text-xs">
+        <div class="flex items-center gap-2.5 text-emerald-300 truncate">
+          <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <div class="truncate">
+            <span class="font-medium text-white truncate"><%= card.resume.filename %></span>
+            <span class="text-slate-500 text-[10px] ml-1.5">(<%= number_to_human_size(card.resume.byte_size) %>)</span>
+          </div>
+        </div>
+        <%= link_to "Download Current", rails_blob_path(card.resume, disposition: "attachment"), class: "px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 shrink-0 transition" %>
+      </div>
+    <% end %>
+
+    <!-- External Resume Link (Google Drive, Notion, etc.) -->
+    <div class="pt-2 border-t border-slate-800/80">
+      <%= f.label :resume_url, "Or External Resume URL (Google Drive, Notion, LinkedIn)", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <%= f.url_field :resume_url, 
+                      placeholder: "https://drive.google.com/file/d/.../view", 
+                      class: "w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      <p class="text-[11px] text-slate-500 mt-1">If both are provided, the uploaded PDF file takes precedence.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6: DESIGNER TEMPLATE & COLOR THEME -->
+  <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-5">
+    <div class="border-b border-slate-800 pb-3">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+        Designer Template & Color Theme
+      </h3>
+      <p class="text-xs text-slate-400 mt-0.5">Choose your preferred visual presentation and brand accent.</p>
+    </div>
+
+    <!-- Template Styles Grid -->
+    <div>
+      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Template Layout Style</label>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <% VisitingCard::TEMPLATE_STYLES.each do |key, config| %>
+          <label class="cursor-pointer relative p-3.5 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-950/60 flex items-start gap-3 transition">
+            <%= f.radio_button :template_style, key, 
+                               data: { action: "change->card-preview#updateTheme" },
+                               class: "mt-1 text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700" %>
+            <div class="space-y-0.5">
+              <span class="text-sm font-bold text-white block"><%= config[:name] %></span>
+              <span class="text-xs text-slate-400 leading-tight block"><%= config[:description] %></span>
+            </div>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Color Accent Swatches -->
+    <div class="pt-3">
+      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Accent Color</label>
+      <div class="flex flex-wrap items-center gap-3">
+        <% VisitingCard::COLOR_THEMES.each do |key, config| %>
+          <label class="cursor-pointer flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition">
+            <%= f.radio_button :color_theme, key, 
+                               data: { action: "change->card-preview#updateTheme" },
+                               class: "text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700" %>
+            <span class="w-3.5 h-3.5 rounded-full" style="background-color: <%= config[:hex] %>"></span>
+            <span class="text-xs font-medium text-slate-300"><%= config[:name] %></span>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Friendly Slug Customization -->
+    <div class="pt-3 border-t border-slate-800/80">
+      <%= f.label :slug, "Custom URL Slug (Vanity Link)", class: "block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5" %>
+      <div class="flex items-center">
+        <span class="px-3.5 py-2.5 rounded-l-xl bg-slate-800/80 border border-r-0 border-slate-800 text-slate-400 font-mono text-xs select-none">
+          /c/
+        </span>
+        <%= f.text_field :slug, 
+                         data: { card_preview_target: "slugInput", action: "input->card-preview#updateSlug" },
+                         placeholder: "your-name-or-handle", 
+                         class: "w-full px-4 py-2.5 rounded-r-xl bg-slate-950 border border-slate-800 text-white font-mono placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition" %>
+      </div>
+      <p class="text-[11px] text-slate-500 mt-1">Leave blank on creation to automatically generate from your name.</p>
+    </div>
+  </div>
+
+  <!-- Form Actions -->
+  <div class="flex items-center justify-between pt-4">
+    <%= link_to "Cancel", dashboard_path, class: "px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-400 hover:text-white transition" %>
+
+    <%= f.submit card.persisted? ? "Save Card Changes" : "Create Visiting Card", 
+                 class: "px-7 py-3 rounded-xl text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl shadow-indigo-600/30 transition active:scale-95 cursor-pointer" %>
+  </div>
+<% end %>
+

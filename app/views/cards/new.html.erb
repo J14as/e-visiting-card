@@ -1,0 +1,27 @@
+<% content_for :title, "Create Visiting Card | CardForge" %>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" data-controller="card-preview clipboard">
+  <div class="mb-8">
+    <div class="flex items-center gap-2 text-xs text-slate-400 mb-2">
+      <%= link_to "Dashboard", dashboard_path, class: "hover:text-white transition" %>
+      <span>/</span>
+      <span class="text-indigo-400">New Card</span>
+    </div>
+    <h1 class="text-3xl font-extrabold text-white tracking-tight">Create Your Digital Visiting Card</h1>
+    <p class="text-sm text-slate-400 mt-1">Fill in your professional details on the left, watch your live card update on the right.</p>
+  </div>
+
+  <!-- Split Screen Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <!-- Left Column: Form -->
+    <div class="lg:col-span-7">
+      <%= render "form", card: @card %>
+    </div>
+
+    <!-- Right Column: Sticky Live Preview -->
+    <div class="lg:col-span-5 lg:sticky lg:top-24">
+      <%= render "preview_card", card: @card, public_url: "#" %>
+    </div>
+  </div>
+</div>
+
