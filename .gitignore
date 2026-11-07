@@ -40,3 +40,4 @@ Desktop.ini
 # Ignore test outputs
 /test/rendered_page_*.png
 /test/output_test.pdf
+

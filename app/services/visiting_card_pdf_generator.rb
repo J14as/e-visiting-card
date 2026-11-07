@@ -49,6 +49,7 @@ class VisitingCardPdfGenerator
 
     pdf.render
   end
+  
 
   # 2. A4 Printable Sheet with Cut / Crop Guidelines (Both sides centered)
   def generate_print_sheet
