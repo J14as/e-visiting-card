@@ -120,6 +120,8 @@ GEM
       railties (>= 7.0)
       responders
       warden (~> 1.2.3)
+    dockerfile-rails (1.7.10)
+      rails (>= 3.0.0)
     dotenv (3.2.0)
     drb (2.2.3)
     ed25519 (1.4.0)
@@ -449,6 +451,7 @@ DEPENDENCIES
   chunky_png
   debug
   devise
+  dockerfile-rails (>= 1.7)
   friendly_id (~> 5.5.0)
   image_processing (~> 1.2)
   importmap-rails
@@ -474,4 +477,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.7.2
+   2.5.11
