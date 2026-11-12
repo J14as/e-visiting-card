@@ -41,3 +41,7 @@ Desktop.ini
 /test/rendered_page_*.png
 /test/output_test.pdf
 
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
