@@ -142,10 +142,18 @@ function stimulusController() {
     }
 
     updateSocials() {
-      this.toggleSocialTarget(this.linkedinInputTarget, this.previewLinkedinTarget)
-      this.toggleSocialTarget(this.githubInputTarget, this.previewGithubTarget)
-      this.toggleSocialTarget(this.instagramInputTarget, this.previewInstagramTarget)
-      this.toggleSocialTarget(this.portfolioInputTarget, this.previewPortfolioTarget)
+      if (this.hasLinkedinInputTarget && this.hasPreviewLinkedinTarget) {
+        this.toggleSocialTarget(this.linkedinInputTarget, this.previewLinkedinTarget)
+      }
+      if (this.hasGithubInputTarget && this.hasPreviewGithubTarget) {
+        this.toggleSocialTarget(this.githubInputTarget, this.previewGithubTarget)
+      }
+      if (this.hasInstagramInputTarget && this.hasPreviewInstagramTarget) {
+        this.toggleSocialTarget(this.instagramInputTarget, this.previewInstagramTarget)
+      }
+      if (this.hasWebsiteInputTarget && this.hasPreviewPortfolioTarget) {
+        this.toggleSocialTarget(this.websiteInputTarget, this.previewPortfolioTarget)
+      }
     }
 
     toggleSocialTarget(inputTarget, previewTarget) {
@@ -169,7 +177,7 @@ function stimulusController() {
     updateTheme() {
       // Find selected style
       let selectedStyle = "modern_dark"
-      const checkedStyleRadio = document.querySelector('input[name="visiting_card[template_style]"]:checked')
+      const checkedStyleRadio = this.element.querySelector('input[name="visiting_card[template_style]"]:checked')
       if (checkedStyleRadio) {
         selectedStyle = checkedStyleRadio.value
       } else if (this.hasStyleInputTarget) {
@@ -178,7 +186,7 @@ function stimulusController() {
 
       // Find selected color
       let selectedColor = "indigo"
-      const checkedColorRadio = document.querySelector('input[name="visiting_card[color_theme]"]:checked')
+      const checkedColorRadio = this.element.querySelector('input[name="visiting_card[color_theme]"]:checked')
       if (checkedColorRadio) {
         selectedColor = checkedColorRadio.value
       } else if (this.hasColorInputTarget) {
@@ -207,4 +215,3 @@ function stimulusController() {
     }
   }
 }
-

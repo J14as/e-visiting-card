@@ -23,6 +23,8 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get new_card_url
     assert_response :success
+    assert_select ".template-choice", count: 10
+    assert_select "[data-template-swatch]", count: 10
   end
 
   test "should create visiting card" do
@@ -72,4 +74,3 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to dashboard_url
   end
 end
-

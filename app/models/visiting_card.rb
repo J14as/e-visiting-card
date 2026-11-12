@@ -45,16 +45,51 @@ class VisitingCard < ApplicationRecord
       bg_class: "bg-zinc-950 text-zinc-100",
       card_bg: "bg-zinc-900/90 border border-emerald-500/30 shadow-2xl backdrop-blur-xl",
       accent: "text-emerald-400"
+    },
+    "editorial" => {
+      name: "Quiet Editorial",
+      description: "Warm paper, refined type, and an understated editorial layout",
+      bg_class: "bg-stone-100 text-stone-900",
+      card_bg: "bg-stone-50 border border-stone-200 shadow-xl",
+      accent: "text-stone-700"
+    },
+    "botanical" => {
+      name: "Soft Botanical",
+      description: "A calm sage palette inspired by nature and thoughtful craft",
+      bg_class: "bg-emerald-950 text-emerald-50",
+      card_bg: "bg-emerald-900/90 border border-emerald-700 shadow-2xl",
+      accent: "text-emerald-300"
+    },
+    "terracotta" => {
+      name: "Warm Terracotta",
+      description: "Soft cream and clay tones for a warm, personal impression",
+      bg_class: "bg-orange-50 text-stone-900",
+      card_bg: "bg-orange-50 border border-orange-200 shadow-xl",
+      accent: "text-orange-800"
+    },
+    "midnight" => {
+      name: "Midnight Gold",
+      description: "Deep blue with restrained gold details for a polished finish",
+      bg_class: "bg-slate-950 text-slate-100",
+      card_bg: "bg-slate-900 border border-amber-400/30 shadow-2xl",
+      accent: "text-amber-300"
+    },
+    "luxe" => {
+      name: "Luxe Onyx",
+      description: "A dramatic onyx canvas with elegant, high-contrast accents",
+      bg_class: "bg-neutral-950 text-neutral-100",
+      card_bg: "bg-neutral-900 border border-neutral-700 shadow-2xl",
+      accent: "text-amber-200"
     }
   }.freeze
 
   COLOR_THEMES = {
-    "indigo" => { name: "Indigo", hex: "#6366f1", badge: "bg-indigo-500" },
-    "emerald" => { name: "Emerald", hex: "#10b981", badge: "bg-emerald-500" },
-    "violet" => { name: "Violet", hex: "#8b5cf6", badge: "bg-violet-500" },
-    "sky" => { name: "Sky Blue", hex: "#0ea5e9", badge: "bg-sky-500" },
-    "rose" => { name: "Rose", hex: "#f43f5e", badge: "bg-rose-500" },
-    "amber" => { name: "Amber Gold", hex: "#f59e0b", badge: "bg-amber-500" }
+    "indigo" => { name: "Indigo", hex: "#6366f1", badge: "bg-indigo-600" },
+    "emerald" => { name: "Emerald", hex: "#10b981", badge: "bg-emerald-700" },
+    "violet" => { name: "Violet", hex: "#8b5cf6", badge: "bg-violet-700" },
+    "sky" => { name: "Sky Blue", hex: "#0ea5e9", badge: "bg-sky-700" },
+    "rose" => { name: "Rose", hex: "#f43f5e", badge: "bg-rose-700" },
+    "amber" => { name: "Amber Gold", hex: "#f59e0b", badge: "bg-amber-700" }
   }.freeze
 
   validates :full_name, presence: true, length: { maximum: 100 }
@@ -72,8 +107,8 @@ class VisitingCard < ApplicationRecord
     [
       :custom_slug,
       :full_name,
-      [:full_name, :company_or_tagline],
-      [:full_name, -> { SecureRandom.hex(3) }]
+      [ :full_name, :company_or_tagline ],
+      [ :full_name, -> { SecureRandom.hex(3) } ]
     ]
   end
 

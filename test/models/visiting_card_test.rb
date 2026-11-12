@@ -58,4 +58,17 @@ class VisitingCardTest < ActiveSupport::TestCase
     @card.full_name = "Cher"
     assert_equal "CH", @card.initials
   end
+
+  test "supports all ten card styles in print-ready PDFs" do
+    assert_equal 10, VisitingCard::TEMPLATE_STYLES.size
+
+    VisitingCard::TEMPLATE_STYLES.each_key do |style|
+      @card.template_style = style
+      pdf = VisitingCardPdfGenerator.render(@card, "https://cardforge.io/c/#{@card.slug}")
+
+      assert pdf.start_with?("%PDF"), "Expected a valid PDF for the #{style} template"
+      assert_includes pdf, "/Count 2", "Expected front and back pages for the #{style} template"
+      assert_includes pdf, "/Subtype /Image", "Expected the QR image for the #{style} template"
+    end
+  end
 end

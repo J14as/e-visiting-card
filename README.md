@@ -22,12 +22,17 @@ Users can register, create multiple digital visiting cards for different roles (
    - **External Resume Link:** Support for linking resumes hosted on Google Drive, Notion, or LinkedIn.
    - **1-Click Download on Public Profile:** Mobile visitors and recruiters can download your resume in one tap via `/c/:slug/resume`.
 
-4. **5 Designer Template Styles & 6 Brand Color Accents:**
+4. **10 Designer Template Styles & 6 Brand Color Accents:**
    - 🌑 **Modern Dark:** Obsidian background with glowing borders and high contrast.
    - ☀️ **Clean Light:** Crisp white, minimalist layout with subtle soft shadows.
    - ⚪ **Minimalist Mono:** Timeless Swiss editorial monochrome aesthetic.
    - 🌌 **Aurora Mesh:** Vibrant violet & cyan mesh gradient with glassmorphism.
    - 🟢 **Cyber Emerald:** Modern tech aesthetic with emerald accents and dark carbon finish.
+   - 📖 **Quiet Editorial:** Warm paper tones and refined typography.
+   - 🌿 **Soft Botanical:** A calm, nature-inspired sage palette.
+   - 🧱 **Warm Terracotta:** Soft cream and clay tones.
+   - 🌙 **Midnight Gold:** Deep blue with restrained gold details.
+   - ✨ **Luxe Onyx:** A dramatic onyx design with elegant accents.
    - 🎨 **Color Themes:** Indigo, Emerald, Violet, Sky Blue, Rose, and Amber Gold.
 
 4. **Dynamic Smart QR Code Engine (`rqrcode` & `chunky_png`):**
@@ -45,7 +50,8 @@ Users can register, create multiple digital visiting cards for different roles (
 
 6. **High-Resolution Print-Ready Business Card PDF Export:**
    - Built with **Prawn** (`VisitingCardPdfGenerator`).
-   - Renders standard 3.5" x 2.0" (252pt x 144pt) double-sided business card PDF with sharp typography, front styling, and back QR code with "Scan to Connect" instructions.
+   - Renders a standard 3.5" x 2.0" (252pt x 144pt) double-sided card with template-specific compositions: centered, split-panel, typographic, tech-grid, botanical, and editorial layouts.
+   - Keeps a dedicated QR reverse, quiet zone for scanning, print-safe framing, and the selected brand palette on both sides and the A4 print sheet.
 
 ---
 

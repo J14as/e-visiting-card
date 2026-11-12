@@ -9,7 +9,7 @@ class CardsController < ApplicationController
   def new
     @card = current_user.visiting_cards.build(
       card_title: "My Professional Card",
-      template_style: "modern_dark",
+      template_style: "editorial",
       color_theme: "indigo",
       full_name: current_user.name.presence || "",
       email: current_user.email
